@@ -1,0 +1,6 @@
+sysrepo-plugind -P file.so
+
+sysrepoctl -i file.yang
+
+sysrepo-plugind -d -v3
+
