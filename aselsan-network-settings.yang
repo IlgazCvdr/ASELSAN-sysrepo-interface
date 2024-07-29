@@ -2,6 +2,7 @@ module aselsan-network-settings {
   namespace "http://example.com/aselsan-network-settings";
   prefix "asel-net";
 
+  // Define RPC to create a network interface
   rpc create-network-interface {
     description "Create a new network interface.";
     input {
@@ -12,6 +13,7 @@ module aselsan-network-settings {
     }
   }
 
+  // Define RPC to set IP settings for a network interface
   rpc set-ip-settings {
     description "Set IP settings for a network interface.";
     input {
@@ -22,6 +24,29 @@ module aselsan-network-settings {
       leaf ip-address {
         type string;
         description "IP address to set.";
+      }
+    }
+  }
+
+  rpc get-network-interfaces {
+    description "Retrieve all network interfaces and their IP addresses.";
+    output {
+      leaf interfaces {
+        type string;
+        description "A string containing all network interfaces and their IP addresses, formatted as 'interface_name ip_address'.";
+      }
+    }
+  }
+  rpc delete-ip-address {
+    description "Delete an IP address from a network interface.";
+    input {
+      leaf interface-name {
+        type string;
+        description "Name of the network interface from which the IP address will be removed.";
+      }
+      leaf ip-address {
+        type string;
+        description "IP address to delete.";
       }
     }
   }
